@@ -1,0 +1,83 @@
+/* Load the pinned families so font-family resolves on systems without them. */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+:root {
+  /* Min GUI palette (theme schema, built-in Min). */
+  --min-background: #0C0C0C;
+  --min-panel-background: #1C1C1C;
+  --min-foreground: #CCCCCC;
+  --min-accent: #0178D4;
+  --min-separator: #5F5F5F;
+}
+
+html {
+  /* The root background fills the viewport outside the centered body column. */
+  background-color: var(--min-background);
+}
+
+body {
+  max-width: 88ch;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  line-height: 1.6;
+
+  font-family: 'Source Sans 3', sans-serif;
+  background-color: var(--min-background);
+  color: var(--min-foreground);
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  color: #9CDCFE;
+  background-color: var(--min-background);
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--min-accent);
+}
+
+.ribbon {
+  --ribbon-link-padding: 0.4rem;
+  background-color: var(--min-panel-background);
+  border-bottom: 1px solid var(--min-separator);
+}
+
+.ribbon a {
+  color: inherit;
+}
+
+.ribbon a:hover {
+  background-color: var(--min-separator);
+  /* The GUI uses a fixed foreground for hovered inactive tabs. */
+  color: #C0C0C0;
+}
+
+/* Extend the first link's hover background without shifting its label. */
+.ribbon-links a:first-child {
+  position: relative;
+  isolation: isolate;
+}
+
+.ribbon-links a:first-child:hover {
+  background-color: transparent;
+}
+
+.ribbon-links a:first-child:hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  inset-inline-start: calc(-1 * var(--ribbon-link-padding));
+  z-index: -1;
+  border-radius: inherit;
+  background-color: var(--min-separator);
+  pointer-events: none;
+}
+
+.ribbon a:focus-visible {
+  outline: 2px solid var(--min-accent);
+  outline-offset: -2px;
+}

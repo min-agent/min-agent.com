@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Min Agent</title>
+  <link rel="icon" href="min_logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      display: grid;
+      grid-template-columns:
+        [full-start] minmax(4rem, 1fr)
+        [content-start] minmax(0, 88ch) [content-end]
+        minmax(1rem, 1fr) [full-end];
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ribbon,
+    .ribbon nav {
+      display: grid;
+      grid-column: full-start / full-end;
+      grid-template-columns: subgrid;
+    }
+
+    .ribbon nav {
+      align-items: center;
+      padding-block: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .ribbon nav > a {
+      grid-column: full-start / content-start;
+      justify-self: start;
+      margin-inline-start: 0.65rem;
+    }
+
+    .ribbon-links {
+      grid-column: content-start / content-end;
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 0.5rem;
+    }
+
+    .ribbon a {
+      display: flex;
+      align-items: center;
+      min-height: 2.25rem;
+      padding-inline: var(--ribbon-link-padding);
+      border-radius: 0.25rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .ribbon-links a:first-child {
+      padding-inline-start: 0;
+    }
+
+    .ribbon img {
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      object-fit: contain;
+    }
+
+    main {
+      grid-column: content-start / content-end;
+      padding-block-start: 1.5rem;
+    }
+
+    main > :first-child {
+      margin-block-start: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="ribbon">
+    <nav aria-label="Site navigation">
+      <a href="https://min-agent.com"><img src="https://min-agent.com/min_logo.png" alt="Min" /></a>
+      <div class="ribbon-links">
+        <a href="https://docs.min-agent.com">Docs</a>
+        <a href="https://github.com/min-agent">GitHub</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <p>Min is a desktop agent, currently in closed beta.</p>
+  </main>
+</body>
+</html>
